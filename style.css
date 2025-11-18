@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cabin', sans-serif;
+}
+
+body {
+    display: flex;
+    position: relative;
+    height: 100vh;
+    color: #2c2a36;
+    background-color: #2c2a36;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-principal{
+    background-color:#f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    height: 50%;
+    width: 25%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+}
+
+p{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.entradas-textos{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.entradas-textos input{
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 10px;
+    background-color: #2c2a36;
+    color: #f5f5f5;
+}
+
+.entradas-textos input::placeholder{
+    color: #f5f5f5;
+}
+
+.entradas-textos label{
+    font-weight: 600;
+}
+
+#botao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #1e1b32;
+    color: #f5f5f5;
+    width: 170px;
+    height: 35px;
+    border-radius: 30px;
+}
+
+#botao:hover{
+    box-shadow: #1e1b32 0px 0px 5px;
+    color: white;
+    transform: scale(1.01);
+    transition: all 0.3s ease-in-out;
+}
+
+#msg {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 3px;
+}
+
+.error{
+    color: red;
+}
+
+.success{
+    color: rgb(0, 255, 0);
+}
+

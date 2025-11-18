@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario AV3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card-principal">
+        <h1>LOGIN</h1>
+        <p>Faça seu login abaixo</p>
+        <form class="formulario" onsubmit="return validar()">
+            <div class="entradas-textos">
+
+                <label for="email">Email</label>
+                <input id="email" type="text" name="email" placeholder="Email">
+
+                <label for="senha">Senha</label>
+                <input id="senha" type="password" name="senha" placeholder="Senha">
+
+            </div>
+            <div class="botao">
+                <button id="botao" type="submit">LOGIN</button>
+            </div>
+            <div id="msg"></div>
+        </form>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
