@@ -1,10 +1,10 @@
 function validar() {
     const email = document.getElementById('email').getAttribute('value').trim();
     const senha = document.getElementById('senha').getAttribute('value');
-    const mensagemDiv = document.getElementById('mensagem');
+    const mensagem = document.getElementById('mensagem');
 
-    mensagemDiv.textContent = '';
-    mensagemDiv.className = '';
+    mensagem.textContent = '';
+    mensagem.className = '';
     
     let erros = [];
     
@@ -41,12 +41,12 @@ function validar() {
     }
     
     if (erros.length > 0) {
-        mensagemDiv.innerHTML = erros.join('<br>'); 
-        mensagemDiv.className = 'error';
+        mensagem.innerHTML = erros.join('<br>'); 
+        mensagem.className = 'error';
         return false;
     }
     
-    mensagemDiv.textContent = 'Login realizado com sucesso!';
-    mensagemDiv.className = 'success';
+    mensagem.textContent = 'Login realizado com sucesso!';
+    mensagem.className = 'success';
     return false; 
 }
