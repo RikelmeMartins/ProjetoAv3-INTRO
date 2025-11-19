@@ -1,3 +1,5 @@
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function validar() {
     const email = document.getElementById('email').getAttribute('value').trim();
     const senha = document.getElementById('senha').getAttribute('value');
@@ -6,45 +8,56 @@ function validar() {
     mensagem.textContent = '';
     mensagem.className = '';
     
-    let erros = [];
-    
     if (email === '') {
-        erros.push('Campo de e-mail não pode estar vazio.');
+        mensagem.textContent = 'Campo de e-mail não pode estar vazio.';
+        mensagem.className = 'error';
+        return false;
     } else {
         if (email.length < 10) {
-            erros.push('E-mail deve ter pelo menos 10 caracteres.');
+            mensagem.textContent = 'E-mail deve ter pelo menos 10 caracteres.';
+            mensagem.className = 'error';
+            return false;
         }
         if (!email.includes('@') || !email.includes('.')) {
-            erros.push('E-mail deve conter @ e .');
+            mensagem.textContent = 'E-mail deve conter @ e .';
+            mensagem.className = 'error';
+            return false;
         }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
         if (!emailRegex.test(email)) {
-            erros.push('Formato de e-mail inválido.');
+            mensagem.textContent = 'Formato de e-mail inválido.';
+            mensagem.className = 'error';
+            return false;
         }
     }
   
     if (senha === '') {
-        erros.push('Campo de senha não pode estar vazio.');
+        mensagem.textContent = 'Campo de senha não pode estar vazio.';
+        mensagem.className = 'error';
+        return false;
     } else {
         if (senha.length < 6) {
-            erros.push('Senha deve ter pelo menos 6 caracteres.');
+            mensagem.textContent = 'Senha deve ter pelo menos 6 caracteres.';
+            mensagem.className = 'error';
+            return false;
         }
         if (!/\d/.test(senha)) {
-            erros.push('Senha deve conter pelo menos 1 número.');
+            mensagem.textContent = 'Senha deve conter pelo menos 1 número.';
+            mensagem.className = 'error';
+            return false;
         }
         if (!/[A-Z]/.test(senha)) {
-            erros.push('Senha deve conter pelo menos 1 letra maiúscula.');
+            mensagem.textContent = 'Senha deve conter pelo menos 1 letra maiúscula.';
+            mensagem.className = 'error';
+            return false;
         }
         if (!/[a-z]/.test(senha)) {
-            erros.push('Senha deve conter pelo menos 1 letra minúscula.');
+            mensagem.textContent = 'Senha deve conter pelo menos 1 letra minúscula.';
+            mensagem.className = 'error';
+            return false;
         }
     }
     
-    if (erros.length > 0) {
-        mensagem.innerHTML = erros.join('<br>'); 
-        mensagem.className = 'error';
-        return false;
-    }
     
     mensagem.textContent = 'Login realizado com sucesso!';
     mensagem.className = 'success';
