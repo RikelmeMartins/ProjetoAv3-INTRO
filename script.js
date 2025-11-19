@@ -1,68 +1,52 @@
-let email = document.getElementById("email").value.trim();
-let senha = document.getElementById("senha").value;
-let mensagem = document.getElementById("msg");
+function validar() {
+    const email = document.getElementById('email').getAttribute('value').trim();
+    const senha = document.getElementById('senha').getAttribute('value');
+    const mensagemDiv = document.getElementById('mensagem');
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-mensagem.textContent = '';
-mensagem.className = '';
-
-function validar(){
-    if (email === ""){
-        mensagem.textContent = 'Campo email vazil!'
-        mensagem.className = 'error';
+    mensagemDiv.textContent = '';
+    mensagemDiv.className = '';
+    
+    let erros = [];
+    
+    if (email === '') {
+        erros.push('Campo de e-mail não pode estar vazio.');
+    } else {
+        if (email.length < 10) {
+            erros.push('E-mail deve ter pelo menos 10 caracteres.');
+        }
+        if (!email.includes('@') || !email.includes('.')) {
+            erros.push('E-mail deve conter @ e .');
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            erros.push('Formato de e-mail inválido.');
+        }
+    }
+  
+    if (senha === '') {
+        erros.push('Campo de senha não pode estar vazio.');
+    } else {
+        if (senha.length < 6) {
+            erros.push('Senha deve ter pelo menos 6 caracteres.');
+        }
+        if (!/\d/.test(senha)) {
+            erros.push('Senha deve conter pelo menos 1 número.');
+        }
+        if (!/[A-Z]/.test(senha)) {
+            erros.push('Senha deve conter pelo menos 1 letra maiúscula.');
+        }
+        if (!/[a-z]/.test(senha)) {
+            erros.push('Senha deve conter pelo menos 1 letra minúscula.');
+        }
+    }
+    
+    if (erros.length > 0) {
+        mensagemDiv.innerHTML = erros.join('<br>'); 
+        mensagemDiv.className = 'error';
         return false;
     }
     
-    if (email.length < 10){
-        mensagem.textContent = 'Email deve conter pelo menos 10 caracteres';
-        mensagem.className = 'error';
-        return false;
-    }
-
-    if (!email.includes("@") || !email.includes(".")){
-        mensagem.textContent = 'Email deve conter @ e .';
-        mensagem.className = 'error';
-        return false;
-    }
-
-    if (!emailRegex.test(email)){
-        mensagem.textContent = 'Formato de email inválido!';
-        mensagem.className = 'error';
-        return false;
-    }
-
-    if (senha === ''){
-        mensagem.textContent = 'Campo senha vazil!';
-        mensagem.className = 'error';
-        return false;
-    }
-
-    if (senha.length < 6){
-        mensagem.textContent = 'Senha deve conter pelo menos 6 caracteres';
-        mensagem.className = 'error';
-        return false;
-    }
-
-    if(!/[0-9]/.test(senha)){
-        mensagem.textContent = 'Senha deve conter pelo menos 1 número!';
-        mensagem.className = 'error';
-        return false;
-    }
-
-    if (!/[A-Z]/.test(senha)){
-        mensagem.textContent = 'Senha deve conter pelo menos 1 letra maiúscula!';
-        mensagem.className = 'error';
-        return false;
-    }
-
-    if (!/[a-a]/.test(senha)){
-        mensagem.textContent = 'Senha deve conter pelo menos 1 letra minúscula!';
-        mensagem.className = 'error';
-        return false;
-    }
-
-    mensagem.textContent = 'Login realizado com sucesso!';
-    mensagem.className = 'success'; 
-    return false;     
+    mensagemDiv.textContent = 'Login realizado com sucesso!';
+    mensagemDiv.className = 'success';
+    return false; 
 }
-
