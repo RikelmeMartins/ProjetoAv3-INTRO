@@ -61,5 +61,10 @@ function validar() {
     
     mensagem.textContent = 'Login realizado com sucesso!';
     mensagem.className = 'success';
+    exibir();
     return false; 
+}
+
+function exibir(){
+    window.location.href = 'https://github.com/RikelmeMartins/ProjetoAv3-INTRO';
 }
